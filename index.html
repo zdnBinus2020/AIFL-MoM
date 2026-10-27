@@ -5,10 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#287df5">
-  <meta name="description" content="AIFL Services Meeting Dashboard — Strategy, Operations, Growth.">
+  <meta name="description" content="AIFL Services Meeting Dashboard">
   <title>AIFL — This Is for Meeting</title>
 
-  <!-- Google Fonts: Anton for headlines, DM Sans for UI -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,7 +16,6 @@
     :root {
       --blue: #287df5;
       --blue-dark: #1266e8;
-      --blue-light: #70b5ff;
       --ink: #15243b;
       --muted: #78879b;
       --line: #e8edf5;
@@ -60,27 +58,22 @@
       display: none !important;
     }
 
-    /* ========================================
-       HERO — AIFL KEY VISUAL
-    ======================================== */
+    /* =================================
+       HERO / AIFL KEY VISUAL
+    ================================= */
 
     .hero {
       position: relative;
+      isolation: isolate;
       min-height: 510px;
       padding: 32px clamp(22px, 5vw, 76px) 38px;
-      color: #fff;
       overflow: hidden;
-      isolation: isolate;
+      color: #fff;
       background:
         radial-gradient(
           ellipse at 94% 88%,
           rgba(143, 202, 255, .72),
           transparent 42%
-        ),
-        radial-gradient(
-          ellipse at 30% 25%,
-          rgba(25, 120, 255, .12),
-          transparent 50%
         ),
         linear-gradient(
           116deg,
@@ -94,10 +87,10 @@
       content: "";
       position: absolute;
       z-index: -1;
-      width: min(72vw, 920px);
-      aspect-ratio: 1;
       top: -22%;
       left: 46%;
+      width: min(72vw, 920px);
+      aspect-ratio: 1;
       border: 2px solid rgba(255, 255, 255, .22);
       border-radius: 50%;
       pointer-events: none;
@@ -107,8 +100,8 @@
       content: "A";
       position: absolute;
       z-index: -1;
-      right: -2%;
       top: 11%;
+      right: -2%;
       font-family: var(--font-body);
       font-size: clamp(450px, 62vw, 860px);
       line-height: .9;
@@ -121,10 +114,10 @@
     .orbit {
       position: absolute;
       z-index: -1;
+      top: 40%;
+      right: 11%;
       width: 590px;
       height: 590px;
-      right: 11%;
-      top: 40%;
       border: 2px solid rgba(255, 255, 255, .16);
       border-radius: 50%;
       transform: translateY(-12%);
@@ -143,22 +136,22 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      color: white;
-      text-decoration: none;
       flex-shrink: 0;
+      color: #fff;
+      text-decoration: none;
     }
 
     .brand-mark {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       width: 76px;
       height: 76px;
       border: 3px solid rgba(255, 255, 255, .96);
       border-radius: 50%;
       outline: 1px dashed rgba(255, 255, 255, .85);
       outline-offset: -9px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       line-height: 1;
     }
 
@@ -182,8 +175,8 @@
       align-items: center;
       gap: clamp(10px, 2.2vw, 34px);
       font-size: 11px;
-      letter-spacing: 2px;
       font-weight: 600;
+      letter-spacing: 2px;
       text-transform: uppercase;
       white-space: nowrap;
     }
@@ -196,11 +189,13 @@
     .hero-copy {
       position: relative;
       z-index: 1;
+      width: 100%;
       max-width: 1100px;
       margin-top: 2px;
     }
 
-    /* ANTON HEADLINE */
+    /* ANTON HEADLINES */
+
     .hero-eyebrow {
       margin: 0 0 -9px 5px;
       font-family: var(--font-heading);
@@ -263,14 +258,14 @@
       opacity: .82;
     }
 
-    /* ========================================
-       DASHBOARD LAYOUT
-    ======================================== */
+    /* =================================
+       MAIN DASHBOARD
+    ================================= */
 
     main {
       max-width: 1440px;
-      padding: 44px clamp(18px, 4vw, 58px) 72px;
       margin: auto;
+      padding: 44px clamp(18px, 4vw, 58px) 72px;
     }
 
     .section-heading {
@@ -340,9 +335,7 @@
       color: var(--ink);
     }
 
-    /* ========================================
-       STATISTICS
-    ======================================== */
+    /* STATISTICS */
 
     .stats {
       display: grid;
@@ -378,9 +371,7 @@
       font-size: 10px;
     }
 
-    /* ========================================
-       MEETING TABLE
-    ======================================== */
+    /* MEETING RECORDS */
 
     .dashboard-panel {
       overflow: hidden;
@@ -553,11 +544,10 @@
       font-size: 12px;
       text-align: center;
       line-height: 1.7;
+      overflow-wrap: anywhere;
     }
 
-    /* ========================================
-       MOBILE MEETING CARDS
-    ======================================== */
+    /* MOBILE CARDS */
 
     .mobile-list {
       display: none;
@@ -601,9 +591,7 @@
       overflow-wrap: anywhere;
     }
 
-    /* ========================================
-       ADD MEETING MODAL
-    ======================================== */
+    /* ADD MEETING MODAL */
 
     .modal {
       position: fixed;
@@ -723,79 +711,220 @@
       color: var(--blue);
     }
 
-    /* ========================================
-       RESPONSIVE
-    ======================================== */
+    /* =================================
+       TABLET
+    ================================= */
 
-    @media (min-width: 1400px) {
+    @media (max-width: 900px) and (min-width: 761px) {
       .hero {
-        min-height: 560px;
+        min-height: 440px;
+      }
+
+      .hero-title {
+        font-size: 16vw;
+      }
+
+      .hero-eyebrow {
+        font-size: 12vw;
+      }
+
+      .hero-signature {
+        font-size: 6.4vw;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
+    /* =================================
+       MOBILE — CENTER THE HEADLINE
+    ================================= */
 
-/* Center hero headline on mobile */
-@media (max-width: 760px) {
-  .hero-copy {
-    width: 100%;
-    margin-top: 38px;
-    text-align: center;
-  }
+    @media (max-width: 760px) {
+      .hero {
+        min-height: 430px;
+        padding: 22px 18px 28px;
+      }
 
-  .hero-eyebrow,
-  .hero-signature,
-  .hero-title {
-    margin-left: 0;
-    margin-right: 0;
-    text-align: center;
-  }
+      /* Logo and navigation stay at the top */
+      .hero-top {
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
 
-  .hero-eyebrow {
-    margin-bottom: -5px;
-  }
+      .brand-mark {
+        width: 59px;
+        height: 59px;
+      }
 
-  .hero-signature {
-    margin-bottom: -3px;
-  }
+      .brand-mark strong {
+        font-size: 17px;
+      }
 
-  .hero-title {
-    font-size: clamp(76px, 17vw, 132px);
-    line-height: 1;
-    letter-spacing: 0;
-  }
+      .brand-mark span {
+        font-size: 6px;
+        letter-spacing: 2px;
+      }
 
-  .hero-subtitle {
-    justify-content: center;
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
+      .hero-nav {
+        gap: 7px;
+        font-size: 8px;
+        letter-spacing: .7px;
+      }
 
-@media (max-width: 390px) {
-  .hero-eyebrow {
-    font-size: 23vw;
-  }
+      /* Center the entire headline block */
+      .hero-copy {
+        width: 100%;
+        max-width: none;
+        margin: 42px auto 0;
+        text-align: center;
+      }
 
-  .hero-signature {
-    font-size: 11vw;
-  }
+      .hero-eyebrow {
+        width: 100%;
+        margin: 0 0 -3px;
+        font-size: clamp(76px, 17vw, 120px);
+        line-height: 1;
+        letter-spacing: 0;
+        text-align: center;
+      }
 
-  .hero-title {
-    font-size: 19vw;
-  }
-}
+      .hero-signature {
+        width: 100%;
+        margin: 0 0 -2px;
+        font-size: clamp(39px, 8.3vw, 61px);
+        line-height: 1.1;
+        letter-spacing: 0;
+        text-align: center;
+        white-space: nowrap;
+      }
 
+      .hero-title {
+        width: 100%;
+        margin: 0;
+        font-size: clamp(74px, 16.5vw, 126px);
+        line-height: 1.02;
+        letter-spacing: 0;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .hero-subtitle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        margin: 17px auto 0;
+        font-size: clamp(9px, 2.5vw, 16px);
+        letter-spacing: clamp(1.5px, .55vw, 4px);
+        text-align: center;
+      }
+
+      .hero-subtitle::before {
+        width: clamp(25px, 7vw, 52px);
+        height: 3px;
+      }
+
+      .hero-bottom {
+        margin: 25px 0 0;
+        font-size: 8px;
+        letter-spacing: 1px;
+        text-align: center;
+      }
+
+      .hero::after {
+        top: 26%;
+        right: -12%;
+        font-size: 125vw;
+      }
+
+      .orbit {
+        top: 48%;
+        right: -24%;
+        width: 350px;
+        height: 350px;
+      }
+
+      main {
+        padding: 30px 18px 48px;
+      }
+
+      .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .section-heading .btn {
+        width: 100%;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .stat-card {
+        padding: 16px;
+        border-radius: 14px;
+      }
+
+      .stat-value {
+        font-size: 29px;
+      }
+
+      .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+      }
+
+      .toolbar-controls {
+        justify-content: stretch;
+      }
+
+      .search-field,
+      .filter-field {
+        width: 100%;
+      }
+
+      .table-wrap {
+        display: none;
+      }
+
+      .mobile-list {
+        display: block;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+    }
+
+    /* SMALL MOBILE */
 
     @media (max-width: 390px) {
       .hero {
-        padding-right: 16px;
-        padding-left: 16px;
+        min-height: 400px;
+        padding-right: 14px;
+        padding-left: 14px;
       }
 
       .hero-nav {
         gap: 5px;
         font-size: 7px;
-        letter-spacing: .4px;
+        letter-spacing: .35px;
+      }
+
+      .brand-mark {
+        width: 51px;
+        height: 51px;
       }
 
       .hero-copy {
@@ -807,22 +936,26 @@
       }
 
       .hero-signature {
-        font-size: 11vw;
+        font-size: 10.7vw;
       }
 
       .hero-title {
-        font-size: 19vw;
+        font-size: 18.5vw;
       }
 
       .hero-subtitle {
-        gap: 8px;
-        font-size: 9px;
-        letter-spacing: 1.3px;
+        gap: 7px;
+        font-size: 8.5px;
+        letter-spacing: 1.2px;
       }
 
-      .brand-mark {
-        width: 51px;
-        height: 51px;
+      .hero-subtitle::before {
+        width: 24px;
+      }
+
+      .hero-bottom {
+        font-size: 7px;
+        letter-spacing: .7px;
       }
 
       .meeting-card-top {
@@ -846,7 +979,7 @@
 
 <body>
 
-  <!-- HERO / BRAND SIGNATURE -->
+  <!-- AIFL HERO -->
   <header class="hero">
     <div class="orbit"></div>
 
@@ -879,7 +1012,7 @@
     </p>
   </header>
 
-  <!-- MAIN DASHBOARD -->
+  <!-- DASHBOARD -->
   <main>
     <section class="section-heading">
       <div>
@@ -945,9 +1078,11 @@
             <option value="">All categories</option>
           </select>
 
-          <button class="btn btn-secondary" id="refreshBtn" type="button">
-            ↻ Refresh
-          </button>
+          <button
+            class="btn btn-secondary"
+            id="refreshBtn"
+            type="button"
+          >↻ Refresh</button>
         </div>
       </div>
 
@@ -955,7 +1090,7 @@
         Loading meeting records...
       </div>
 
-      <!-- DESKTOP TABLE -->
+      <!-- Desktop table -->
       <div class="table-wrap" id="tableWrap" hidden>
         <table>
           <thead>
@@ -972,7 +1107,7 @@
         </table>
       </div>
 
-      <!-- MOBILE CARDS -->
+      <!-- Mobile cards -->
       <div class="mobile-list" id="mobileList"></div>
 
       <div class="empty-state" id="emptyState" hidden>
@@ -1113,14 +1248,13 @@
   </div>
 
   <script>
-    /* ========================================
-       AIFL MOM API CONFIGURATION
-       Keep these values consistent with Code.gs.
-    ======================================== */
+    /* =================================
+       API CONFIGURATION
+    ================================= */
 
     const API_URL =
-      "https://script.google.com/macros/s/AKfycbyfoA-ambLuqx9U28DGV-IQ-k6nVSfHFXnjIEKFJVxs3Lea0VNTsmRokMfcF8Kv4NX0/exec";
-
+    "https://script.google.com/macros/s/AKfycbyfoA-ambLuqx9U28DGV-IQ-k6nVSfHFXnjIEKFJVxs3Lea0VNTsmRokMfcF8Kv4NX0/exec";
+    
     const API_TOKEN =
       "AIFL_MOM_2026_K7vN9xQ2pL8mR4tW6yB3dF5hJ1cZ0sUa";
 
@@ -1128,11 +1262,9 @@
     let requestCounter = 0;
     let isSaving = false;
 
-    const $ = (id) => document.getElementById(id);
+    const $ = id => document.getElementById(id);
 
-    /* ========================================
-       API REQUEST — JSONP
-    ======================================== */
+    /* API REQUEST — JSONP */
 
     function callApi(params) {
       return new Promise((resolve, reject) => {
@@ -1144,30 +1276,29 @@
 
         const timeout = setTimeout(() => {
           finish();
+
           reject(
             new Error(
-              "Request timed out. Check the Apps Script deployment and connection."
+              "Request timed out. Check Apps Script deployment and connection."
             )
           );
         }, 20000);
 
         function finish() {
           if (finished) return;
-          finished = true;
 
+          finished = true;
           clearTimeout(timeout);
           delete window[callbackName];
           script.remove();
         }
 
-        window[callbackName] = (response) => {
+        window[callbackName] = response => {
           finish();
 
           if (!response || response.ok !== true) {
             reject(
-              new Error(
-                response?.error || "The API returned an error."
-              )
+              new Error(response?.error || "The API returned an error.")
             );
             return;
           }
@@ -1186,6 +1317,7 @@
 
         script.onerror = () => {
           finish();
+
           reject(
             new Error(
               "Unable to reach Apps Script. Check the Web App URL and deployment access."
@@ -1197,9 +1329,7 @@
       });
     }
 
-    /* ========================================
-       DATA HELPERS
-    ======================================== */
+    /* DATA HELPERS */
 
     function getValue(record, ...keys) {
       for (const key of keys) {
@@ -1248,7 +1378,7 @@
     }
 
     function escapeHtml(value) {
-      return String(value ?? "").replace(/[&<>"']/g, (char) => ({
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
@@ -1302,9 +1432,7 @@
       return "";
     }
 
-    /* ========================================
-       STATISTICS AND FILTERS
-    ======================================== */
+    /* STATISTICS */
 
     function renderStats() {
       $("totalMeetings").textContent = meetings.length;
@@ -1317,13 +1445,15 @@
 
       $("totalCategories").textContent = categories.size;
 
-      const countType = (word) => meetings.filter(m =>
+      const countType = word => meetings.filter(m =>
         String(m.kategori).toLowerCase().includes(word)
       ).length;
 
       $("internalMeetings").textContent = countType("internal");
       $("externalMeetings").textContent = countType("external");
     }
+
+    /* CATEGORY FILTER */
 
     function renderCategoryFilter() {
       const filter = $("categoryFilter");
@@ -1369,20 +1499,16 @@
       });
     }
 
-    /* ========================================
-       RENDER MEETINGS
-    ======================================== */
+    /* RENDER TABLE AND MOBILE CARDS */
 
     function renderMeetings() {
       const filtered = getFilteredMeetings();
-      const body = $("meetingTableBody");
-      const mobile = $("mobileList");
 
       $("loadingState").hidden = true;
       $("tableWrap").hidden = false;
       $("emptyState").hidden = filtered.length !== 0;
 
-      body.innerHTML = filtered.map(m => {
+      $("meetingTableBody").innerHTML = filtered.map(m => {
         const url = safeHttpUrl(m.linkDocs);
 
         const documentLink = url
@@ -1432,7 +1558,7 @@
         `;
       }).join("");
 
-      mobile.innerHTML = filtered.map(m => {
+      $("mobileList").innerHTML = filtered.map(m => {
         const url = safeHttpUrl(m.linkDocs);
 
         return `
@@ -1484,9 +1610,7 @@
       }).join("");
     }
 
-    /* ========================================
-       LOAD DATA
-    ======================================== */
+    /* LOAD MEETINGS */
 
     async function loadMeetings() {
       $("loadingState").hidden = false;
@@ -1524,9 +1648,7 @@
       }
     }
 
-    /* ========================================
-       MODAL CONTROLS
-    ======================================== */
+    /* MODAL CONTROLS */
 
     function openModal() {
       $("meetingModal").classList.add("open");
@@ -1536,6 +1658,7 @@
 
     function closeModal() {
       if (isSaving) return;
+
       $("meetingModal").classList.remove("open");
     }
 
@@ -1560,21 +1683,12 @@
     });
 
     document.addEventListener("keydown", event => {
-      if (
-        event.key === "Escape" &&
-        !$("meetingModal").classList.contains("open")
-      ) {
-        return;
-      }
-
       if (event.key === "Escape") {
         closeModal();
       }
     });
 
-    /* ========================================
-       SAVE MEETING
-    ======================================== */
+    /* SAVE MEETING */
 
     $("meetingForm").addEventListener("submit", async event => {
       event.preventDefault();
@@ -1620,10 +1734,12 @@
 
         await loadMeetings();
 
+        isSaving = false;
+
         setTimeout(() => {
-          isSaving = false;
           closeModal();
         }, 900);
+
       } catch (error) {
         showFormMessage(
           "Unable to save meeting. " + error.message,
@@ -1636,9 +1752,7 @@
       }
     });
 
-    /* ========================================
-       INITIALIZE
-    ======================================== */
+    /* INITIALIZE */
 
     loadMeetings();
   </script>
