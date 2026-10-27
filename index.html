@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -9,7 +10,7 @@
   <style>
     :root {
       --bg: #f4f6fa;
-      --surface: #ffffff;
+      --surface: #fff;
       --surface-soft: #f8fafc;
       --text: #172033;
       --muted: #64748b;
@@ -30,10 +31,6 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -44,10 +41,7 @@
       line-height: 1.5;
     }
 
-    button,
-    input,
-    select,
-    textarea {
+    button, input, select, textarea {
       font: inherit;
     }
 
@@ -107,12 +101,6 @@
       margin: 2px 0 0;
       color: var(--muted);
       font-size: 12px;
-    }
-
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
     }
 
     .system-status {
@@ -253,11 +241,6 @@
       border-color: var(--border);
     }
 
-    .btn-danger {
-      background: var(--red-bg);
-      color: var(--red);
-    }
-
     .btn:disabled {
       cursor: not-allowed;
       opacity: .6;
@@ -301,7 +284,7 @@
       font-size: 11px;
     }
 
-    /* MAIN PANEL */
+    /* MEETING PANEL */
 
     .panel {
       overflow: hidden;
@@ -382,7 +365,7 @@
       resize: vertical;
     }
 
-    /* TABLE */
+    /* DESKTOP TABLE */
 
     .table-wrap {
       width: 100%;
@@ -566,7 +549,7 @@
       margin-top: 15px;
     }
 
-    /* EMPTY / LOADING */
+    /* LOADING AND EMPTY STATES */
 
     .message-state {
       padding: 48px 20px;
@@ -729,8 +712,6 @@
       border-left: 4px solid #ef4444;
     }
 
-    /* RESPONSIVE */
-
     @media (max-width: 1000px) {
       .app-shell {
         padding: 22px 20px 36px;
@@ -882,8 +863,7 @@
         border-radius: 22px 22px 0 0;
       }
 
-      .modal-header,
-      .modal-body {
+      .modal-header, .modal-body {
         padding: 20px;
       }
 
@@ -903,9 +883,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
+      *, *::before, *::after {
         scroll-behavior: auto !important;
         animation-duration: .01ms !important;
         transition-duration: .01ms !important;
@@ -917,7 +895,6 @@
 <body>
   <main class="app-shell">
 
-    <!-- HEADER -->
     <header class="topbar">
       <div class="brand">
         <div class="brand-mark">AI</div>
@@ -927,25 +904,19 @@
         </div>
       </div>
 
-      <div class="topbar-right">
-        <div class="system-status">
-          <span id="connectionDot" class="status-dot"></span>
-          <span id="connectionText">Connecting...</span>
-        </div>
+      <div class="system-status">
+        <span id="connectionDot" class="status-dot"></span>
+        <span id="connectionText">Connecting...</span>
       </div>
     </header>
 
-    <!-- HERO -->
     <section class="hero">
       <div class="eyebrow">
         <span>●</span>
         AIFL MEETING HUB
       </div>
 
-      <h1>
-        THIS IS <span>FOR</span><br>
-        BETTER MEETINGS.
-      </h1>
+      <h1>THIS IS <span>FOR</span><br>BETTER MEETINGS.</h1>
 
       <p class="hero-description">
         One place to track meeting agendas, documentation, participants,
@@ -956,14 +927,12 @@
         <span class="hero-note">
           Meeting records · Documentation · Collaboration
         </span>
-
         <button class="btn btn-primary" id="heroAddBtn">
           + Add Meeting
         </button>
       </div>
     </section>
 
-    <!-- STATS -->
     <section class="stats-grid" aria-label="Meeting statistics">
       <article class="stat-card">
         <div class="stat-label">Total Meetings</div>
@@ -990,7 +959,6 @@
       </article>
     </section>
 
-    <!-- MEETING RECORDS -->
     <section class="panel">
       <div class="panel-header">
         <div>
@@ -1001,12 +969,8 @@
         </div>
 
         <div class="panel-actions">
-          <button class="btn btn-outline" id="refreshBtn">
-            ↻ Refresh
-          </button>
-          <button class="btn btn-dark" id="addBtn">
-            + Add MoM
-          </button>
+          <button class="btn btn-outline" id="refreshBtn">↻ Refresh</button>
+          <button class="btn btn-dark" id="addBtn">+ Add MoM</button>
         </div>
       </div>
 
@@ -1029,7 +993,6 @@
         </div>
       </div>
 
-      <!-- DESKTOP TABLE -->
       <div class="table-wrap">
         <table>
           <thead>
@@ -1055,7 +1018,6 @@
         </table>
       </div>
 
-      <!-- MOBILE CARDS -->
       <div class="mobile-list" id="mobileMeetingList">
         <div class="message-state">
           <span class="loading-spinner"></span>
@@ -1068,7 +1030,6 @@
         <span id="lastUpdated">Not yet synchronized</span>
       </footer>
     </section>
-
   </main>
 
   <!-- ADD MEETING MODAL -->
@@ -1097,49 +1058,27 @@
         <div class="form-grid">
           <div class="field">
             <label for="tanggal">Meeting date *</label>
-            <input
-              class="control"
-              type="date"
-              id="tanggal"
-              name="tanggal"
-              required
-            >
+            <input class="control" type="date" id="tanggal"
+              name="tanggal" required>
           </div>
 
           <div class="field">
             <label for="kategori">Category / Project *</label>
-            <input
-              class="control"
-              type="text"
-              id="kategori"
-              name="kategori"
-              placeholder="e.g. AIFL Services"
-              required
-            >
+            <input class="control" type="text" id="kategori"
+              name="kategori" placeholder="e.g. AIFL Services" required>
           </div>
         </div>
 
         <div class="field">
           <label for="agenda">Meeting name / Agenda *</label>
-          <input
-            class="control"
-            type="text"
-            id="agenda"
-            name="agenda"
-            placeholder="Meeting title or agenda"
-            required
-          >
+          <input class="control" type="text" id="agenda"
+            name="agenda" placeholder="Meeting title or agenda" required>
         </div>
 
         <div class="field">
           <label for="linkDocs">Google Docs URL</label>
-          <input
-            class="control"
-            type="url"
-            id="linkDocs"
-            name="linkDocs"
-            placeholder="https://docs.google.com/..."
-          >
+          <input class="control" type="url" id="linkDocs"
+            name="linkDocs" placeholder="https://docs.google.com/...">
         </div>
 
         <div class="form-grid">
@@ -1155,24 +1094,15 @@
 
           <div class="field">
             <label for="participants">Participants</label>
-            <input
-              class="control"
-              type="text"
-              id="participants"
-              name="participants"
-              placeholder="Names or team"
-            >
+            <input class="control" type="text" id="participants"
+              name="participants" placeholder="Names or team">
           </div>
         </div>
 
         <div class="field">
           <label for="additionals">Additional notes</label>
-          <textarea
-            class="control"
-            id="additionals"
-            name="additionals"
-            placeholder="Follow-ups, notes, or next steps..."
-          ></textarea>
+          <textarea class="control" id="additionals" name="additionals"
+            placeholder="Follow-ups, notes, or next steps..."></textarea>
         </div>
 
         <p style="margin:0;color:#64748b;font-size:11px">
@@ -1191,30 +1121,26 @@
     </form>
   </div>
 
-  <!-- TOAST -->
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
   <script>
     /*
-     * ==========================================================
-     * AIFL MoM Dashboard — Configuration
-     * ==========================================================
+     * AIFL MoM Dashboard
+     * Frontend: Netlify
+     * Backend: Google Apps Script
      *
-     * IMPORTANT:
-     * 1. This URL must serve a Google Apps Script JSONP API.
-     * 2. Code.gs must support action=list and action=add.
-     * 3. API_TOKEN must match the token in Code.gs.
+     * Backend must support:
+     * action=list -> {ok:true, data:[...]}
+     * action=add  -> {ok:true, message:"..."}
      *
-     * A token embedded in a public HTML file can be inspected
-     * by visitors. Use this only for a low-sensitivity prototype.
+     * IMPORTANT: Use the same API_TOKEN in Code.gs and here.
      */
 
     const API_URL =
-      "https://script.google.com/macros/s/AKfycbwFPa9Hy5uxWNqhZ-tw33pvS6ozklItaCd9fPkn1T-6nOPZ5kXCs9qLVewyUY2daaI-/exec";
+      "https://script.google.com/macros/s/AKfycbyfoA-ambLuqx9U28DGV-IQ-k6nVSfHFXnjIEKFJVxs3Lea0VNTsmRokMfcF8Kv4NX0/exec";
 
-    const API_TOKEN = "CHANGE_THIS_TO_A_LONG_RANDOM_SECRET";
-
-    const REQUEST_TIMEOUT = 15000;
+    const API_TOKEN = "AIFL_MOM_2026_K7vN9xQ2pL8mR4tW6yB3dF5hJ1cZ0sUa";
+    const REQUEST_TIMEOUT = 20000;
 
     let allMeetings = [];
     let toastTimer = null;
@@ -1241,7 +1167,6 @@
 
       $("#searchInput").addEventListener("input", renderMeetings);
       $("#categoryFilter").addEventListener("change", renderMeetings);
-
       $("#meetingForm").addEventListener("submit", handleFormSubmit);
 
       document.addEventListener("keydown", (event) => {
@@ -1251,7 +1176,6 @@
 
     function setConnectionStatus(status, message) {
       const dot = $("#connectionDot");
-
       dot.className = "status-dot";
 
       if (status === "online") dot.classList.add("online");
@@ -1261,14 +1185,9 @@
     }
 
     /*
-     * JSONP is used because a browser page hosted on Netlify
-     * cannot directly call a cross-origin Apps Script endpoint
-     * unless the server supports an appropriate CORS response.
-     *
-     * JSONP requires the Apps Script endpoint to return:
-     * callbackName({...});
+     * JSONP is compatible with cross-domain script requests,
+     * but Code.gs must return callbackName({...}); for this to work.
      */
-
     function callApi(params = {}) {
       return new Promise((resolve, reject) => {
         const callbackName =
@@ -1287,7 +1206,10 @@
         };
 
         Object.entries(requestParams).forEach(([key, value]) => {
-          url.searchParams.set(key, value == null ? "" : String(value));
+          url.searchParams.set(
+            key,
+            value == null ? "" : String(value)
+          );
         });
 
         let completed = false;
@@ -1314,7 +1236,7 @@
           finish(
             reject,
             new Error(
-              "Permintaan ke Apps Script timeout. Periksa deployment API."
+              "Request timed out. Check the Apps Script API deployment."
             )
           );
         }, REQUEST_TIMEOUT);
@@ -1327,7 +1249,7 @@
           finish(
             reject,
             new Error(
-              "Gagal mengakses Apps Script. Periksa URL dan deployment."
+              "Apps Script request failed. Check deployment access, URL, and API response."
             )
           );
         };
@@ -1340,7 +1262,6 @@
     async function loadMeetings() {
       setConnectionStatus("loading", "Syncing...");
       $("#refreshBtn").disabled = true;
-
       showLoadingState();
 
       try {
@@ -1348,14 +1269,12 @@
 
         if (!response || response.ok !== true) {
           throw new Error(
-            response?.error || "API tidak mengembalikan data yang valid."
+            response?.error || "API returned an invalid response."
           );
         }
 
         if (!Array.isArray(response.data)) {
-          throw new Error(
-            "Format data API tidak sesuai. Properti data harus berupa array."
-          );
+          throw new Error("API response data must be an array.");
         }
 
         allMeetings = response.data.map(normalizeMeeting);
@@ -1365,6 +1284,7 @@
         renderMeetings();
 
         setConnectionStatus("online", "Connected");
+
         $("#lastUpdated").textContent =
           "Last synced: " +
           new Date().toLocaleTimeString("id-ID", {
@@ -1376,14 +1296,10 @@
         console.error("Failed to load meetings:", error);
 
         setConnectionStatus("error", "Connection issue");
-
-        showErrorState(
-          error.message ||
-          "Tidak dapat memuat data meeting."
-        );
+        showErrorState(error.message || "Unable to load meeting records.");
 
         showToast(
-          "Gagal memuat data. Periksa konfigurasi API.",
+          "Failed to load data. Check the Apps Script API.",
           "error"
         );
 
@@ -1393,10 +1309,6 @@
     }
 
     function normalizeMeeting(item) {
-      /*
-       * Supports either object rows or array rows.
-       * Preferred object keys match the Apps Script API.
-       */
       if (Array.isArray(item)) {
         return {
           tanggal: item[0] ?? "",
@@ -1687,12 +1599,11 @@
         value.toLowerCase() === "read document" ||
         value === "-"
       ) {
-        return `<span style="color:#94a3b8;font-size:11px">No document</span>`;
+        return `
+          <span style="color:#94a3b8;font-size:11px">No document</span>
+        `;
       }
 
-      /*
-       * Only permit HTTP/HTTPS links.
-       */
       try {
         const parsed = new URL(value);
 
@@ -1711,7 +1622,9 @@
           </a>
         `;
       } catch (_) {
-        return `<span style="color:#94a3b8;font-size:11px">Invalid URL</span>`;
+        return `
+          <span style="color:#94a3b8;font-size:11px">Invalid URL</span>
+        `;
       }
     }
 
@@ -1730,12 +1643,10 @@
     }
 
     function showErrorState(message) {
-      const safeMessage = escapeHtml(message);
-
       const html = `
         <div class="message-state">
           <strong>Unable to load meetings</strong>
-          <p>${safeMessage}</p>
+          <p>${escapeHtml(message)}</p>
           <p style="margin-top:10px">
             Check the Apps Script API and deployment settings.
           </p>
@@ -1746,7 +1657,6 @@
         `<tr><td colspan="6">${html}</td></tr>`;
 
       $("#mobileMeetingList").innerHTML = html;
-
       $("#resultCount").textContent = "Unable to load records";
     }
 
@@ -1809,7 +1719,7 @@
 
         if (!response || response.ok !== true) {
           throw new Error(
-            response?.error || "Gagal menyimpan meeting."
+            response?.error || "Failed to save meeting."
           );
         }
 
@@ -1818,7 +1728,7 @@
         setDefaultDate();
 
         showToast(
-          response.message || "Meeting berhasil disimpan.",
+          response.message || "Meeting saved successfully.",
           "success"
         );
 
@@ -1828,7 +1738,7 @@
         console.error("Failed to save meeting:", error);
 
         showToast(
-          error.message || "Gagal menyimpan meeting.",
+          error.message || "Failed to save meeting.",
           "error"
         );
 
@@ -1843,10 +1753,9 @@
 
       const stringValue = String(value).trim();
 
-      /*
-       * Handle ISO dates and common spreadsheet date strings.
-       */
-      const isoMatch = stringValue.match(/^(\d{4})-(\d{2})-(\d{2})/);
+      const isoMatch = stringValue.match(
+        /^(\d{4})-(\d{2})-(\d{2})/
+      );
 
       if (isoMatch) {
         return new Date(
